@@ -14,7 +14,6 @@ stages:
   displayName: First_Stage
   jobs:
   - job: FirstStage_Job
-    displayName: First_Job
     steps: 
     - task: Maven@3
       inputs: 
@@ -27,7 +26,6 @@ stages:
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         goals: 'package'
   -stage: SecondStage
-  displayName1: Second_Stage
   jobs:
   - job: SecondStage_Job
     steps1: 
