@@ -9,14 +9,30 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+stages:
+  -stage0: 'FirstStage'
+  displayName: 'First_Stage'
+  jobs:
+  - job: 'FirstStage_Job'
+    displayName: 'First_Job'
+    steps: 
+    - task: Maven@3
+      inputs: 
+        mavenPomFile: 'pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        goals: 'package'
+  -stage1: 'SecondStage'
+  displayName1: 'Second_Stage'
+  jobs1:
+  - job1: 'SecondStage_Job'
+    displayName2: 'Second_Job'
+    steps1: 
+    - task1: PythonScript@
+      inputs: 
+      scriptSource: 'inline'
+      script: '''print("test script")'''
