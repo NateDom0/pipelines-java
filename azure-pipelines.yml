@@ -24,9 +24,6 @@ stages:
           publishJUnitResults: true
           testResultsFiles: '**/surefire-reports/TEST-*.xml'
           goals: 'package'
-
-  -stage:
-   jobs:
     -job:
       steps:
       - task: JavaToolInstaller@0
@@ -34,7 +31,6 @@ stages:
            versionSpec: '8'
            jdkArchitectureOption: 'x64'
            jdkSourceOption: 'PreInstalled'
-
   -stage:
     jobs:
     -job:
