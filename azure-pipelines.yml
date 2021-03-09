@@ -10,26 +10,26 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  - stage1: FirstStage 
-  displayName: First_Stage
-  jobs:
+  - stage: FirstStage 
+    displayName: First_Stage
+    jobs:
     - job: FirstStage_Job
-   steps: 
-    - task: Maven@3
-      inputs: 
-        mavenPomFile: 'pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.8'
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: true
-        testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        goals: 'package'
+      steps: 
+      - task: Maven@3
+        inputs: 
+          mavenPomFile: 'pom.xml'
+          mavenOptions: '-Xmx3072m'
+          javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.8'
+          jdkArchitectureOption: 'x64'
+          publishJUnitResults: true
+          testResultsFiles: '**/surefire-reports/TEST-*.xml'
+          goals: 'package'
   - stage: SecondStage
-  jobs:
-  - job: SecondStage_Job
-    steps: 
-    - task1: PythonScript@
-      inputs: 
-      scriptSource: 'inline'
-      script: '''print("test script")'''
+    jobs:
+    - job: SecondStage_Job
+      steps: 
+      - task: PythonScript@0
+        inputs:
+          scriptSource: 'inline'
+          script: 'print("test script")'
