@@ -10,11 +10,11 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  -stage: FirstStage
+  -stage: FirstStage 
   displayName: First_Stage
   jobs:
-  - job: 'FirstStage_Job'
-    displayName: 'First_Job'
+  - job: FirstStage_Job
+    displayName: First_Job
     steps: 
     - task: Maven@3
       inputs: 
@@ -26,11 +26,10 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         goals: 'package'
-  -stage1: 'SecondStage'
-  displayName1: 'Second_Stage'
-  jobs1:
-  - job1: 'SecondStage_Job'
-    displayName2: 'Second_Job'
+  -stage: SecondStage
+  displayName1: Second_Stage
+  jobs:
+  - job: SecondStage_Job
     steps1: 
     - task1: PythonScript@
       inputs: 
