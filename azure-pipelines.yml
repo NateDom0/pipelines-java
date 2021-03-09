@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-  -stage: FirstStage 
+  -stage1: FirstStage 
   displayName: First_Stage
   jobs:
   - job: FirstStage_Job
