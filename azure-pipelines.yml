@@ -12,7 +12,7 @@ pool:
 stages:
   -stage1: FirstStage 
   displayName: First_Stage
-  jobs:
+  jobs1:
   - job: FirstStage_Job
     steps: 
     - task: Maven@3
