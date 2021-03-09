@@ -9,8 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-
-steps: 
+steps:
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -21,15 +20,12 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
-
 - task: JavaToolInstaller@0
-inputs:
-versionSpec: '8'
-jdkArchitectureOption: 'x64'
-jdkSourceOption: 'PreInstalled'
-  
+  inputs:
+    versionSpec: '8'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
 - task: PythonScript@0
-inputs:
-scriptSource: 'inline'
-script: 'print("Test Script")'
+  inputs:
+    scriptSource: 'inline'
+    script: '''print("test script")'''
