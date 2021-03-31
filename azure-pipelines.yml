@@ -32,4 +32,12 @@ stages:
       - task: PythonScript@0
         inputs:
           scriptSource: 'inline'
-          script: 'print("test script")'
+          script: 'print("test script 1")'
+  - stage: ThirdStage
+    jobs:
+    - job: ThirdStage_Job
+      steps: 
+      - task: PythonScript@0
+        inputs:
+          scriptSource: 'inline'
+          script: 'print("test script 2")'
